@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Scientific Calc</title>
+    <link rel="stylesheet" href="style.css">
+    <div class="app-container">
+    <div class="brand-mark">AB</div> <!-- Your Mark -->
+    <div class="calculator">
+        <!-- ... existing calculator code ... -->
+</head>
+<body>
+    <div class="app-container">
+        <!-- Calculator Section -->
+        <div class="calculator">
+            <div id="display">0</div>
+            <div class="buttons">
+                <!-- Row 1: Sci Functions -->
+                <button class="sci" onclick="append('Math.sin(')">sin</button>
+                <button class="sci" onclick="append('Math.cos(')">cos</button>
+                <button class="sci" onclick="append('Math.PI')">π</button>
+                <button class="sci" onclick="append('**')">^</button>
+                
+                <!-- Row 2: Control -->
+                <button class="action" onclick="clearDisplay()">AC</button>
+                <button class="action" onclick="backspace()">DEL</button>
+                <button class="op" onclick="append('/')">÷</button>
+                <button class="op" onclick="append('*')">×</button>
+
+                <!-- Row 3-6: Numbers & Basic Ops -->
+                <button onclick="append('7')">7</button><button onclick="append('8')">8</button><button onclick="append('9')">9</button>
+                <button class="op" onclick="append('-')">-</button>
+                
+                <button onclick="append('4')">4</button><button onclick="append('5')">5</button><button onclick="append('6')">6</button>
+                <button class="op" onclick="append('+')">+</button>
+                
+                <button onclick="append('1')">1</button><button onclick="append('2')">2</button><button onclick="append('3')">3</button>
+                <button class="eq" onclick="calculate()">=</button>
+                
+                <button onclick="append('0')" style="grid-column: span 2;">0</button>
+                <button onclick="append('.')">.</button>
+            </div>
+        </div>
+
+        <!-- Conversion Section -->
+        <div class="converter">
+            <h3>Quick Convert</h3>
+            <input type="number" id="unitInput" placeholder="Enter value">
+            <select id="convertType">
+                <option value="kgToLb">Weight: kg to lbs</option>
+                <option value="kmToM">Distance: km to miles</option>
+                <option value="cToF">Temp: °C to °F</option>
+            </select>
+            <button onclick="runConversion()">Convert</button>
+            <div id="convResult">Result will appear here</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

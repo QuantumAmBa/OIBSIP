@@ -1,0 +1,86 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.calculator {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 320px;
+}
+
+#display {
+    background: #2d2d2d;
+    padding: 20px;
+    font-size: 2rem;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #3d3d3d;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover { background: #505050; }
+.op { background: #ff9f0a; color: black; }
+.sci { background: #a5a5a5; color: black; }
+.action { background: #ff3b30; }
+.eq { background: #34c759; grid-row: span 2; }
+
+.converter {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 20px;
+    width: 300px;
+    height: fit-content;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: #2d2d2d;
+    color: white;
+}
+.brand-mark {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ff9f0a; /* Matches the operator color */
+    border: 2px solid #ff9f0a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+}
