@@ -5,32 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amey Bajpai - OIBSIP Portfolio</title>
     <style>
-        :root { --red: #FF4136; --gold: #FFB400; --dark: #121212; --card-bg: #1e1e1e; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--dark); color: #fff; margin: 0; padding: 40px 20px; text-align: center; }
-        h1 { color: var(--red); margin-bottom: 5px; }
-        .subtitle { color: #888; margin-bottom: 30px; }
+        /* Global Pop Theme Styles */
+        :root { 
+            --red: #FF4136; 
+            --gold: #FFB400; 
+            --dark: #121212; 
+            --card-bg: #1e1e1e; 
+            --btn-gray: #2d2d2d;
+        }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: var(--dark); 
+            color: #fff; 
+            margin: 0; 
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+        h1 { color: var(--red); margin-bottom: 5px; font-size: 2.2rem; }
+        .subtitle { color: #888; margin-bottom: 35px; font-size: 1rem; }
         
-        /* Tabs System */
-        .tab-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
-        .tab-btn { background: #333; color: white; border: 2px solid #555; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.2s; }
-        .tab-btn.active, .tab-btn:hover { background: var(--red); border-color: var(--red); }
+        /* Navigation Tabs */
+        .tab-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .tab-btn { 
+            background: var(--btn-gray); 
+            color: white; 
+            border: 2px solid #444; 
+            padding: 12px 24px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 0.95rem; 
+            transition: all 0.2s ease; 
+        }
+        .tab-btn.active, .tab-btn:hover { 
+            background: var(--red); 
+            border-color: var(--red); 
+            box-shadow: 0 4px 15px rgba(255, 65, 54, 0.3);
+        }
         
-        .app-section { display: none; max-width: 500px; margin: 0 auto; background: var(--card-bg); border: 2px solid #333; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        /* Application Section Containers */
+        .app-section { 
+            display: none; 
+            max-width: 440px; 
+            margin: 0 auto; 
+            background: var(--card-bg); 
+            border: 1px solid #333; 
+            padding: 30px; 
+            border-radius: 24px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); 
+        }
         .app-section.active { display: block; }
 
-        /* Pizza App Styles */
-        .pop-btn { background: var(--red); color: white; border: none; padding: 12px 24px; margin: 10px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .pop-btn:hover { background: var(--gold); transform: scale(1.05); }
-        .ab-badge { display: inline-block; border: 2px solid var(--gold); color: var(--gold); padding: 2px 10px; font-weight: bold; margin-bottom: 15px; border-radius: 4px; }
+        /* Aesthetic Pizza App Elements */
+        .ab-badge { 
+            display: inline-block; 
+            border: 2px solid var(--gold); 
+            color: var(--gold); 
+            padding: 4px 14px; 
+            font-weight: 800; 
+            margin-bottom: 25px; 
+            border-radius: 6px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .pizza-heading { font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; }
+        .pizza-box { display: flex; flex-direction: column; gap: 12px; }
+        .pop-btn { 
+            background: var(--red); 
+            color: white; 
+            border: none; 
+            padding: 16px 28px; 
+            border-radius: 14px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1rem;
+            transition: all 0.2s ease; 
+        }
+        .pop-btn:hover { 
+            background: var(--gold); 
+            color: #000;
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(255, 180, 0, 0.4);
+        }
 
-        /* Calculator Styles */
-        .calc-screen { background: #111; color: #00ff00; font-family: monospace; font-size: 2rem; padding: 15px; text-align: right; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; min-height: 40px; }
-        .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .calc-btn { background: #2a2a2a; color: white; border: 1px solid #444; padding: 20px; font-size: 1.2rem; border-radius: 8px; cursor: pointer; }
-        .calc-btn:hover { background: #444; }
-        .calc-btn.op { background: var(--gold); color: #000; font-weight: bold; }
+        /* Perfectly Proportional Calculator Grid */
+        .calc-screen { 
+            background: #0f0f0f; 
+            color: #00FF66; 
+            font-family: 'Consolas', monospace; 
+            font-size: 2.2rem; 
+            padding: 20px; 
+            text-align: right; 
+            border-radius: 14px; 
+            margin-bottom: 20px; 
+            border: 1px solid #252525; 
+            min-height: 45px; 
+            overflow: hidden;
+        }
+        .calc-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 12px; 
+        }
+        .calc-btn { 
+            background: var(--btn-gray); 
+            color: white; 
+            border: 1px solid #3a3a3a; 
+            padding: 22px; 
+            font-size: 1.25rem; 
+            font-weight: 600;
+            border-radius: 14px; 
+            cursor: pointer; 
+            transition: all 0.15s ease;
+        }
+        .calc-btn:hover { background: #3e3e3e; border-color: #555; }
+        .calc-btn.op { background: var(--gold); color: #000; font-weight: 700; }
         .calc-btn.op:hover { background: #e09e00; }
-        .calc-btn.eq { grid-column: span 2; background: var(--red); font-weight: bold; }
+        .calc-btn.eq { grid-column: span 2; background: var(--red); color: white; font-weight: 700; }
         .calc-btn.eq:hover { background: #d03027; }
     </style>
 </head>
@@ -46,13 +137,13 @@
 
     <div id="pizza-app" class="app-section active">
         <div class="ab-badge">AB PIZZA MARK</div>
-        <h2 id="pizza-title">Step 1: Select Your Pizza Base</h2>
-        <div id="pizza-options">
+        <h2 id="pizza-title" class="pizza-heading">Step 1: Select Your Pizza Base</h2>
+        <div id="pizza-options" class="pizza-box">
             <button class="pop-btn" onclick="choosePizza('base', 'Thin Crust')">Thin Crust</button>
             <button class="pop-btn" onclick="choosePizza('base', 'Cheese Burst')">Cheese Burst</button>
             <button class="pop-btn" onclick="choosePizza('base', 'Pan Pizza')">Pan Pizza</button>
         </div>
-        <p id="order-status" style="margin-top: 20px; color: var(--gold); font-weight: bold;"></p>
+        <p id="order-status" style="margin-top: 25px; color: var(--gold); font-weight: bold; font-size: 1.05rem;"></p>
     </div>
 
     <div id="calc-app" class="app-section">
@@ -84,7 +175,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Tab controller logic
         function switchApp(appId, btn) {
             document.querySelectorAll('.app-section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
