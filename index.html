@@ -3,59 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Scientific Calc</title>
-    <link rel="stylesheet" href="style.css">
-    <div class="app-container">
-    <div class="brand-mark">AB</div> <!-- Your Mark -->
-    <div class="calculator">
-        <!-- ... existing calculator code ... -->
+    <title>Amey Bajpai - OIBSIP Projects</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
+        h1 { color: #FF4136; margin-bottom: 10px; }
+        p { color: #888; font-size: 1.1rem; }
+        .container { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .card { background: #1e1e1e; border: 2px solid #333; padding: 30px; border-radius: 15px; width: 250px; transition: 0.3s; text-decoration: none; color: inherit; }
+        .card:hover { border-color: #FF4136; transform: translateY(-5px); }
+        .card h3 { margin-top: 0; color: #FFB400; }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Calculator Section -->
-        <div class="calculator">
-            <div id="display">0</div>
-            <div class="buttons">
-                <!-- Row 1: Sci Functions -->
-                <button class="sci" onclick="append('Math.sin(')">sin</button>
-                <button class="sci" onclick="append('Math.cos(')">cos</button>
-                <button class="sci" onclick="append('Math.PI')">π</button>
-                <button class="sci" onclick="append('**')">^</button>
-                
-                <!-- Row 2: Control -->
-                <button class="action" onclick="clearDisplay()">AC</button>
-                <button class="action" onclick="backspace()">DEL</button>
-                <button class="op" onclick="append('/')">÷</button>
-                <button class="op" onclick="append('*')">×</button>
 
-                <!-- Row 3-6: Numbers & Basic Ops -->
-                <button onclick="append('7')">7</button><button onclick="append('8')">8</button><button onclick="append('9')">9</button>
-                <button class="op" onclick="append('-')">-</button>
-                
-                <button onclick="append('4')">4</button><button onclick="append('5')">5</button><button onclick="append('6')">6</button>
-                <button class="op" onclick="append('+')">+</button>
-                
-                <button onclick="append('1')">1</button><button onclick="append('2')">2</button><button onclick="append('3')">3</button>
-                <button class="eq" onclick="calculate()">=</button>
-                
-                <button onclick="append('0')" style="grid-column: span 2;">0</button>
-                <button onclick="append('.')">.</button>
-            </div>
-        </div>
+    <h1>🏆 Oasis Infobyte Internship Portfolio</h1>
+    <p>Amey Bajpai | IIT Madras Engineering Student</p>
 
-        <!-- Conversion Section -->
-        <div class="converter">
-            <h3>Quick Convert</h3>
-            <input type="number" id="unitInput" placeholder="Enter value">
-            <select id="convertType">
-                <option value="kgToLb">Weight: kg to lbs</option>
-                <option value="kmToM">Distance: km to miles</option>
-                <option value="cToF">Temp: °C to °F</option>
-            </select>
-            <button onclick="runConversion()">Convert</button>
-            <div id="convResult">Result will appear here</div>
+    <div class="container">
+        <a href="#" onclick="alert('The pizza app interface handles customization. Click Place Order to send a test payload straight to the live Render backend!'); return false;" class="card">
+            <h3>🍕 Pizza Delivery App</h3>
+            <p>Full-stack app featuring real-time inventory tracking and automated email stock notifications.</p>
+        </a>
+
+        <div class="card" style="opacity: 0.6;">
+            <h3>🧮 Calculator App</h3>
+            <p>Completed project dashboard submission.</p>
         </div>
     </div>
-    <script src="script.js"></script>
+
 </body>
 </html>
