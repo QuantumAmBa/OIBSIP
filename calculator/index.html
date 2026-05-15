@@ -3,184 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amey Bajpai - OIBSIP Portfolio</title>
-    <style>
-        /* Global Pop Theme Styles */
-        :root { 
-            --red: #FF4136; 
-            --gold: #FFB400; 
-            --dark: #121212; 
-            --card-bg: #1e1e1e; 
-            --btn-gray: #2d2d2d;
-        }
-        body { 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
-            background: var(--dark); 
-            color: #fff; 
-            margin: 0; 
-            padding: 40px 20px; 
-            text-align: center; 
-        }
-        h1 { color: var(--red); margin-bottom: 5px; font-size: 2.2rem; }
-        .subtitle { color: #888; margin-bottom: 35px; font-size: 1rem; }
-        
-        /* Navigation Tabs */
-        .tab-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .tab-btn { 
-            background: var(--btn-gray); 
-            color: white; 
-            border: 2px solid #444; 
-            padding: 12px 24px; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            font-size: 0.95rem; 
-            transition: all 0.2s ease; 
-        }
-        .tab-btn.active, .tab-btn:hover { 
-            background: var(--red); 
-            border-color: var(--red); 
-            box-shadow: 0 4px 15px rgba(255, 65, 54, 0.3);
-        }
-        
-        /* Application Section Containers */
-        .app-section { 
-            display: none; 
-            max-width: 440px; 
-            margin: 0 auto; 
-            background: var(--card-bg); 
-            border: 1px solid #333; 
-            padding: 30px; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6); 
-        }
-        .app-section.active { display: block; }
-
-        /* Aesthetic Pizza App Elements */
-        .ab-badge { 
-            display: inline-block; 
-            border: 2px solid var(--gold); 
-            color: var(--gold); 
-            padding: 4px 14px; 
-            font-weight: 800; 
-            margin-bottom: 25px; 
-            border-radius: 6px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-        .pizza-heading { font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; }
-        .pizza-box { display: flex; flex-direction: column; gap: 12px; }
-        .pop-btn { 
-            background: var(--red); 
-            color: white; 
-            border: none; 
-            padding: 16px 28px; 
-            border-radius: 14px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 1rem;
-            transition: all 0.2s ease; 
-        }
-        .pop-btn:hover { 
-            background: var(--gold); 
-            color: #000;
-            transform: translateY(-2px); 
-            box-shadow: 0 5px 15px rgba(255, 180, 0, 0.4);
-        }
-
-        /* Perfectly Proportional Calculator Grid */
-        .calc-screen { 
-            background: #0f0f0f; 
-            color: #00FF66; 
-            font-family: 'Consolas', monospace; 
-            font-size: 2.2rem; 
-            padding: 20px; 
-            text-align: right; 
-            border-radius: 14px; 
-            margin-bottom: 20px; 
-            border: 1px solid #252525; 
-            min-height: 45px; 
-            overflow: hidden;
-        }
-        .calc-grid { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 12px; 
-        }
-        .calc-btn { 
-            background: var(--btn-gray); 
-            color: white; 
-            border: 1px solid #3a3a3a; 
-            padding: 22px; 
-            font-size: 1.25rem; 
-            font-weight: 600;
-            border-radius: 14px; 
-            cursor: pointer; 
-            transition: all 0.15s ease;
-        }
-        .calc-btn:hover { background: #3e3e3e; border-color: #555; }
-        .calc-btn.op { background: var(--gold); color: #000; font-weight: 700; }
-        .calc-btn.op:hover { background: #e09e00; }
-        .calc-btn.eq { grid-column: span 2; background: var(--red); color: white; font-weight: 700; }
-        .calc-btn.eq:hover { background: #d03027; }
-    </style>
+    <title>Advanced Analytics Engine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1>🏆 Oasis Infobyte Portfolio Dashboard</h1>
-    <div class="subtitle">Amey Bajpai | IIT Madras Engineering Intern</div>
-
-    <div class="tab-container">
-        <button class="tab-btn active" onclick="switchApp('pizza-app', this)">🍕 Pizza System</button>
-        <button class="tab-btn" onclick="switchApp('calc-app', this)">🧮 Calculator System</button>
-    </div>
-
-    <div id="pizza-app" class="app-section active">
-        <div class="ab-badge">AB PIZZA MARK</div>
-        <h2 id="pizza-title" class="pizza-heading">Step 1: Select Your Pizza Base</h2>
-        <div id="pizza-options" class="pizza-box">
-            <button class="pop-btn" onclick="choosePizza('base', 'Thin Crust')">Thin Crust</button>
-            <button class="pop-btn" onclick="choosePizza('base', 'Cheese Burst')">Cheese Burst</button>
-            <button class="pop-btn" onclick="choosePizza('base', 'Pan Pizza')">Pan Pizza</button>
+    <div class="calc-container">
+        <div class="brand-header">⚡ QUANTUM ENGINE</div>
+        <div class="display-wrapper">
+            <div class="history" id="history"></div>
+            <div class="main-display" id="display">0</div>
         </div>
-        <p id="order-status" style="margin-top: 25px; color: var(--gold); font-weight: bold; font-size: 1.05rem;"></p>
-    </div>
+        
+        <div class="mode-tabs">
+            <button class="mode-btn active" onclick="switchMode('scientific')">Scientific</button>
+            <button class="mode-btn" onclick="switchMode('converter')">Converter</button>
+        </div>
 
-    <div id="calc-app" class="app-section">
-        <div class="calc-screen" id="display">0</div>
-        <div class="calc-grid">
-            <button class="calc-btn" onclick="clearCalc()">C</button>
-            <button class="calc-btn op" onclick="pressOp('/')">/</button>
-            <button class="calc-btn op" onclick="pressOp('*')">*</button>
-            <button class="calc-btn op" onclick="pressOp('-')">-</button>
-            
-            <button class="calc-btn" onclick="pressNum('7')">7</button>
-            <button class="calc-btn" onclick="pressNum('8')">8</button>
-            <button class="calc-btn" onclick="pressNum('9')">9</button>
-            <button class="calc-btn op" onclick="pressOp('+')">+</button>
-            
-            <button class="calc-btn" onclick="pressNum('4')">4</button>
-            <button class="calc-btn" onclick="pressNum('5')">5</button>
-            <button class="calc-btn" onclick="pressNum('6')">6</button>
-            <button class="calc-btn" onclick="pressNum('1')">1</button>
-            
-            <button class="calc-btn" onclick="pressNum('2')">2</button>
-            <button class="calc-btn" onclick="pressNum('3')">3</button>
-            <button class="calc-btn" onclick="pressNum('0')">0</button>
-            <button class="calc-btn" onclick="pressNum('.')">.</button>
-            
-            <button class="calc-btn eq" onclick="calculate()">=</button>
+        <div id="sci-grid" class="grid-layout active">
+            <button class="btn util" onclick="clearAll()">C</button>
+            <button class="btn util" onclick="backspace()">⌫</button>
+            <button class="btn sci" onclick="inputSci('Math.PI')">π</button>
+            <button class="btn op" onclick="inputOp('/')">÷</button>
+
+            <button class="btn sci" onclick="inputSci('Math.sin')">sin</button>
+            <button class="btn sci" onclick="inputSci('Math.cos')">cos</button>
+            <button class="btn sci" onclick="inputSci('Math.tan')">tan</button>
+            <button class="btn op" onclick="inputOp('*')">×</button>
+
+            <button class="btn" onclick="inputNum('7')">7</button>
+            <button class="btn" onclick="inputNum('8')">8</button>
+            <button class="btn" onclick="inputNum('9')">9</button>
+            <button class="btn op" onclick="inputOp('-')">−</button>
+
+            <button class="btn" onclick="inputNum('4')">4</button>
+            <button class="btn" onclick="inputNum('5')">5</button>
+            <button class="btn" onclick="inputNum('6')">6</button>
+            <button class="btn op" onclick="inputOp('+')">+</button>
+
+            <button class="btn" onclick="inputNum('1')">1</button>
+            <button class="btn" onclick="inputNum('2')">2</button>
+            <button class="btn" onclick="inputNum('3')">3</button>
+            <button class="btn sci" onclick="inputSci('Math.sqrt')">√</button>
+
+            <button class="btn" onclick="inputNum('0')">0</button>
+            <button class="btn" onclick="inputNum('.')">.</button>
+            <button class="btn eq" onclick="evaluateMath()">=</button>
+        </div>
+
+        <div id="conv-ui" class="grid-layout converter-pane">
+            <select id="conv-type" onchange="updateUnits()">
+                <option value="length">Length (Meters to Kilometers)</option>
+                <option value="weight">Weight (Kilograms to Grams)</option>
+            </select>
+            <input type="number" id="conv-input" placeholder="Enter Value" oninput="runConversion()">
+            <div class="conv-result" id="conv-output">Result: 0</div>
         </div>
     </div>
-
     <script src="script.js"></script>
-    <script>
-        function switchApp(appId, btn) {
-            document.querySelectorAll('.app-section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(appId).classList.add('active');
-            btn.classList.add('active');
-        }
-    </script>
 </body>
 </html>
