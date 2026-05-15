@@ -2,23 +2,24 @@
 :root {
     --beige-canvas: #FBF9F4;      /* Luxurious rich warm clay-beige background */
     --surface-pure: #FFFFFF;      /* Pure white panel card background */
+    --card-dark-slate: #1E2522;   /* Deep olive-charcoal for highly legible option cards */
     --terracotta: #E65F2B;        /* Deep upscale vibrant sunset orange */
     --basil-green: #2D7A4D;       /* Crisp fresh organic Italian basil green */
     --tomato-crimson: #C0392B;    /* Classic deep wood-fired sauce red */
     --text-oil: #1E2522;          /* Rich olive-black premium typography */
+    --text-light: #FFFFFF;        /* Bright white text for the darkened cards */
     --text-olive-muted: #6E7E75;  /* Balanced secondary structural text */
 }
 
 body {
     background-color: var(--beige-canvas);
-    /* Soft premium dynamic square grid layout texture across the background */
     background-image: linear-gradient(rgba(230, 95, 43, 0.02) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(230, 95, 43, 0.02) 1px, transparent 1px);
     background-size: 30px 30px;
     color: var(--text-oil);
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
-    padding-top: 130px; /* Cushion space below floating header */
+    padding-top: 140px; 
     padding-bottom: 80px;
     -webkit-font-smoothing: antialiased;
 }
@@ -31,7 +32,7 @@ body {
     transform: translateX(-50%);
     width: calc(100% - 60px);
     max-width: 1060px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(45, 122, 77, 0.12);
@@ -103,7 +104,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Elegant Minimal tracking Dashboard board */
+/* Elegant Minimal Tracking Dashboard */
 .tracker-surface {
     background: var(--surface-pure);
     border-radius: 24px;
@@ -142,7 +143,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    flex-size: 1;
+    flex: 1;
 }
 .step-circle {
     width: 32px;
@@ -178,7 +179,7 @@ body {
     font-weight: 700;
 }
 
-/* Layout Core Column Architecture */
+/* Core Two-Column Workspace Grid */
 .dual-column-workspace {
     display: flex;
     gap: 35px;
@@ -201,45 +202,55 @@ body {
     border-top: 5px solid var(--terracotta);
 }
 
-h2 {
+/* Rounded Header Panel Style Adjustment */
+h2#flow-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: var(--text-oil);
+    font-size: 1.35rem;
+    background-color: var(--beige-canvas);
+    color: var(--tomato-crimson);
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    padding: 18px 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(230, 95, 43, 0.05);
+    font-weight: 700;
+    letter-spacing: -0.2px;
 }
 
-/* Creative Dynamic Card Grid Matrix */
+/* Re-engineered High-Contrast Card Grid Matrix */
 .gourmet-product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 .menu-card {
-    background: #FAF8F5;
-    border: 1px solid rgba(230, 95, 43, 0.06);
-    padding: 26px 22px;
+    background: var(--card-dark-slate); /* Beautiful premium dark slate background */
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 28px 24px;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 .menu-card:hover {
-    background: var(--surface-pure);
+    background: #252D29;
     border-color: var(--terracotta);
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(230, 95, 43, 0.06);
+    box-shadow: 0 15px 30px rgba(230, 95, 43, 0.15);
 }
 .menu-card h4 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-oil);
+    color: var(--text-light); /* Crisp white text */
+    letter-spacing: 0.2px;
 }
 .menu-card p {
     margin: 0;
-    color: var(--terracotta);
+    color: var(--terracotta); /* Vibrant orange pricing indicator */
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
 /* Classical Italian Ticket Summary List */
@@ -251,7 +262,11 @@ h2 {
     padding-bottom: 16px;
     margin-bottom: 20px;
 }
-.ticket-header-rim h2 { margin: 0; }
+.ticket-header-rim h2 { 
+    margin: 0; 
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+}
 .ticket-id {
     font-size: 0.75rem;
     font-weight: 800;
@@ -292,7 +307,7 @@ h2 {
     padding-top: 20px;
 }
 
-/* Authorization Submission Core Button */
+/* Authorization Submission Button */
 .checkout-dispatch-trigger {
     background: var(--basil-green);
     color: white;
@@ -317,7 +332,7 @@ h2 {
     cursor: not-allowed;
 }
 
-/* Fluid Responsive Compression Layout */
+/* Fluid Responsive Layout Breakpoint */
 @media (max-width: 890px) {
     body { padding-top: 140px; }
     .floating-header { width: calc(100% - 30px); }
