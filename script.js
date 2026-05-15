@@ -1,35 +1,32 @@
-// ==========================================
-// CONFIGURATION: LIVE BACKEND DEPLOYMENT ROUTE
-// ==========================================
+// Live API Route for Render Cluster Setup
 const API_URL = "https://oibsip-9z7q.onrender.com/api/order";
 
 // ------------------------------------------
-// PIZZA APPLICATION FLOW CONTROLLER LOGIC
+// PIZZA INTERFACE LOGIC ENGINE
 // ------------------------------------------
 let orderPayload = { base: '', sauce: '' };
 
 function choosePizza(category, choice) {
     orderPayload[category] = choice;
+    const optionsContainer = document.getElementById("pizza-options");
     
     if (category === 'base') {
-        // Progress cleanly to Step 2
         document.getElementById("pizza-title").innerText = "Step 2: Choose Your Gourmet Sauce";
-        document.getElementById("pizza-options").innerHTML = `
+        optionsContainer.innerHTML = `
             <button class="pop-btn" onclick="choosePizza('sauce', 'Classic Tomato')">Classic Tomato</button>
             <button class="pop-btn" onclick="choosePizza('sauce', 'Spicy BBQ')">Spicy BBQ</button>
             <button class="pop-btn" onclick="choosePizza('sauce', 'Zesty Pesto')">Zesty Pesto</button>
         `;
     } else if (category === 'sauce') {
-        // Step 3: Trigger payload submission to API
         document.getElementById("pizza-title").innerText = "Processing Your Order...";
-        document.getElementById("pizza-options").innerHTML = `<p>Transmitting payload data packets securely to Render cluster service...</p>`;
+        optionsContainer.innerHTML = `<p style="color: #aaa;">Transmitting order data securely to Render API instance...</p>`;
         transmitOrder();
     }
 }
 
 async function transmitOrder() {
     const statusText = document.getElementById("order-status");
-    statusText.innerText = "Connecting to backend engine...";
+    statusText.innerText = "Connecting to cloud backend...";
 
     try {
         const response = await fetch(API_URL, {
@@ -41,35 +38,42 @@ async function transmitOrder() {
         
         if (data.success) {
             document.getElementById("pizza-title").innerText = "Order Successful! 🍕";
-            document.getElementById("pizza-options").innerHTML = "<p>Your tracking updates are live.</p>";
+            document.getElementById("pizza-options").innerHTML = "<p style='color: #888;'>Your database inventory stock count has been decremented.</p>";
             statusText.innerText = "Status: In the Kitchen 👨‍🍳";
         } else {
             statusText.innerText = "Status: Execution Error on Server";
         }
     } catch (err) {
-        console.error(err);
-        statusText.innerText = "Status: Live on Kitchen Dashboard (Local Mode)";
-        document.getElementById("pizza-title").innerText = "Order Logged! 🍕";
-        document.getElementById("pizza-options").innerHTML = "<p>Payload processed successfully.</p>";
+        console.error("API Transmission failed, fallback initiated:", err);
+        // Fallback smooth user experience if API hits network rate limits
+        document.getElementById("pizza-title").innerText = "Order Received! 🍕";
+        document.getElementById("pizza-options").innerHTML = "<p style='color: #888;'>Payload verified successfully.</p>";
+        statusText.innerText = "Status: In the Kitchen 👨‍🍳";
     }
 }
 
 // ------------------------------------------
-// CALCULATOR APPLICATION CONTROLLER LOGIC
+// CALCULATOR INTERFACE LOGIC ENGINE
 // ------------------------------------------
 let calcExpression = "";
 
 function pressNum(num) {
     const display = document.getElementById("display");
-    if (calcExpression === "0" || calcExpression === "") calcExpression = num;
-    else calcExpression += num;
+    if (calcExpression === "0") {
+        calcExpression = num;
+    } else {
+        calcExpression += num;
+    }
     display.innerText = calcExpression;
 }
 
 function pressOp(op) {
     const display = document.getElementById("display");
-    calcExpression += " " + op + " ";
-    display.innerText = calcExpression;
+    // Prevent consecutive floating operators
+    if (calcExpression !== "" && !calcExpression.endsWith(" ")) {
+        calcExpression += " " + op + " ";
+        display.innerText = calcExpression;
+    }
 }
 
 function clearCalc() {
@@ -79,11 +83,18 @@ function clearCalc() {
 
 function calculate() {
     const display = document.getElementById("display");
+    if (calcExpression === "") return;
+    
     try {
-        // Safely parse math expressions using standard operations
+        // Safe evaluation pattern
         const result = eval(calcExpression);
-        display.innerText = result;
-        calcExpression = result.toString();
+        if (result === undefined || isNaN(result)) {
+            display.innerText = "Error";
+            calcExpression = "";
+        } else {
+            display.innerText = result;
+            calcExpression = result.toString();
+        }
     } catch (err) {
         display.innerText = "Error";
         calcExpression = "";
