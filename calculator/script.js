@@ -1,102 +1,75 @@
-// Live API Route for Render Cluster Setup
-const API_URL = "https://oibsip-9z7q.onrender.com/api/order";
+let currentExpr = "";
 
-// ------------------------------------------
-// PIZZA INTERFACE LOGIC ENGINE
-// ------------------------------------------
-let orderPayload = { base: '', sauce: '' };
+function inputNum(num) {
+    if (currentExpr === "0") currentExpr = num;
+    else currentExpr += num;
+    updateDisplay();
+}
 
-function choosePizza(category, choice) {
-    orderPayload[category] = choice;
-    const optionsContainer = document.getElementById("pizza-options");
-    
-    if (category === 'base') {
-        document.getElementById("pizza-title").innerText = "Step 2: Choose Your Gourmet Sauce";
-        optionsContainer.innerHTML = `
-            <button class="pop-btn" onclick="choosePizza('sauce', 'Classic Tomato')">Classic Tomato</button>
-            <button class="pop-btn" onclick="choosePizza('sauce', 'Spicy BBQ')">Spicy BBQ</button>
-            <button class="pop-btn" onclick="choosePizza('sauce', 'Zesty Pesto')">Zesty Pesto</button>
-        `;
-    } else if (category === 'sauce') {
-        document.getElementById("pizza-title").innerText = "Processing Your Order...";
-        optionsContainer.innerHTML = `<p style="color: #aaa;">Transmitting order data securely to Render API instance...</p>`;
-        transmitOrder();
+function inputOp(op) {
+    if (currentExpr !== "" && !currentExpr.endsWith(" ")) {
+        currentExpr += " " + op + " ";
+        updateDisplay();
     }
 }
 
-async function transmitOrder() {
-    const statusText = document.getElementById("order-status");
-    statusText.innerText = "Connecting to cloud backend...";
-
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [orderPayload.base, orderPayload.sauce] })
-        });
-        const data = await response.json();
-        
-        if (data.success) {
-            document.getElementById("pizza-title").innerText = "Order Successful! 🍕";
-            document.getElementById("pizza-options").innerHTML = "<p style='color: #888;'>Your database inventory stock count has been decremented.</p>";
-            statusText.innerText = "Status: In the Kitchen 👨‍🍳";
-        } else {
-            statusText.innerText = "Status: Execution Error on Server";
-        }
-    } catch (err) {
-        console.error("API Transmission failed, fallback initiated:", err);
-        // Fallback smooth user experience if API hits network rate limits
-        document.getElementById("pizza-title").innerText = "Order Received! 🍕";
-        document.getElementById("pizza-options").innerHTML = "<p style='color: #888;'>Payload verified successfully.</p>";
-        statusText.innerText = "Status: In the Kitchen 👨‍🍳";
-    }
+function inputSci(func) {
+    currentExpr += func + "(";
+    updateDisplay();
 }
 
-// ------------------------------------------
-// CALCULATOR INTERFACE LOGIC ENGINE
-// ------------------------------------------
-let calcExpression = "";
-
-function pressNum(num) {
-    const display = document.getElementById("display");
-    if (calcExpression === "0") {
-        calcExpression = num;
-    } else {
-        calcExpression += num;
-    }
-    display.innerText = calcExpression;
-}
-
-function pressOp(op) {
-    const display = document.getElementById("display");
-    // Prevent consecutive floating operators
-    if (calcExpression !== "" && !calcExpression.endsWith(" ")) {
-        calcExpression += " " + op + " ";
-        display.innerText = calcExpression;
-    }
-}
-
-function clearCalc() {
-    calcExpression = "";
+function clearAll() {
+    currentExpr = "";
     document.getElementById("display").innerText = "0";
+    document.getElementById("history").innerText = "";
 }
 
-function calculate() {
-    const display = document.getElementById("display");
-    if (calcExpression === "") return;
-    
+function backspace() {
+    currentExpr = currentExpr.trimEnd();
+    currentExpr = currentExpr.substring(0, currentExpr.length - 1);
+    updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementById("display").innerText = currentExpr || "0";
+}
+
+function evaluateMath() {
     try {
-        // Safe evaluation pattern
-        const result = eval(calcExpression);
-        if (result === undefined || isNaN(result)) {
-            display.innerText = "Error";
-            calcExpression = "";
-        } else {
-            display.innerText = result;
-            calcExpression = result.toString();
-        }
-    } catch (err) {
-        display.innerText = "Error";
-        calcExpression = "";
+        let cleanExpr = currentExpr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+        // Simple automatic closing parenthesis tracking
+        let openCount = (cleanExpr.match(/\(/g) || []).length;
+        let closeCount = (cleanExpr.match(/\)/g) || []).length;
+        while(openCount > closeCount) { cleanExpr += ")"; closeCount++; }
+        
+        let result = eval(cleanExpr);
+        document.getElementById("history").innerText = currentExpr;
+        document.getElementById("display").innerText = Number(result.toFixed(6));
+        currentExpr = result.toString();
+    } catch {
+        document.getElementById("display").innerText = "Syntax Error";
+        currentExpr = "";
     }
+}
+
+function switchMode(mode) {
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.grid-layout').forEach(g => g.style.display = 'none');
+    if(mode === 'scientific') {
+        document.getElementById('sci-grid').style.display = 'grid';
+        event.target.classList.add('active');
+    } else {
+        document.getElementById('conv-ui').style.display = 'flex';
+        event.target.classList.add('active');
+    }
+}
+
+function runConversion() {
+    const type = document.getElementById("conv-type").value;
+    const val = parseFloat(document.getElementById("conv-input").value);
+    const out = document.getElementById("conv-output");
+    if(isNaN(val)) { out.innerText = "Result: 0"; return; }
+    
+    if(type === "length") out.innerText = `Result: ${val / 1000} KM`;
+    else out.innerText = `Result: ${val * 1000} Grams`;
 }
