@@ -217,14 +217,14 @@ h2#flow-title {
     letter-spacing: -0.2px;
 }
 
-/* Re-engineered High-Contrast Card Grid Matrix */
-.gourmet-product-grid {
+/* Re-engineered Selection Container Grid Matrix */
+#selection-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 .menu-card {
-    background: var(--card-dark-slate); /* Beautiful premium dark slate background */
+    background: var(--card-dark-slate); /* Premium dark slate cards */
     border: 1px solid rgba(255, 255, 255, 0.03);
     padding: 28px 24px;
     border-radius: 20px;
@@ -242,12 +242,12 @@ h2#flow-title {
     margin: 0 0 10px 0;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-light); /* Crisp white text */
+    color: var(--text-light); /* White typography on card focus */
     letter-spacing: 0.2px;
 }
 .menu-card p {
     margin: 0;
-    color: var(--terracotta); /* Vibrant orange pricing indicator */
+    color: var(--terracotta); /* Terracotta orange price tags */
     font-weight: 800;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
