@@ -1,0 +1,26 @@
+:root { --brand: #E31837; --accent: #006494; --dark: #0c0d12; --panel-bg: #181a24; }
+body { background: var(--dark); color: #fff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding-bottom: 40px; }
+.brand-nav { background: var(--brand); padding: 16px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+.nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+.logo { font-weight: 900; font-size: 1.3rem; letter-spacing: 1px; }
+.ab-badge { border: 2px solid #fff; padding: 4px 12px; font-weight: 800; font-size: 0.8rem; border-radius: 4px; }
+.main-wrapper { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+.tracker-card { background: #11131c; border-left: 5px solid var(--accent); padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: left; }
+.tracker-card h3 { margin: 0 0 10px 0; font-size: 0.9rem; color: #8a8fbc; letter-spacing: 1px; }
+.tracker-steps { font-weight: bold; font-size: 1.1rem; }
+.t-step { color: #444a63; }
+.t-step.active { color: #00ff87; text-shadow: 0 0 10px rgba(0,255,135,0.3); }
+.app-layout { display: flex; gap: 30px; }
+.card.panel { background: var(--panel-bg); border: 1px solid #26293b; padding: 30px; border-radius: 16px; flex: 2; text-align: left; }
+.card.panel.summary { flex: 1; display: flex; flex-direction: column; justify-content: space-between; border-color: var(--accent); }
+.item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.menu-card { background: #222533; border: 1px solid #32374e; padding: 20px; border-radius: 12px; cursor: pointer; transition: 0.2s; }
+.menu-card:hover { border-color: var(--brand); transform: translateY(-2px); }
+.menu-card h4 { margin: 0 0 6px 0; font-size: 1.2rem; }
+.menu-card p { margin: 0; color: #8a8fbc; font-size: 0.9rem; }
+.summary-list { list-style: none; padding: 0; margin: 20px 0; }
+.summary-list li { padding: 10px 0; border-bottom: 1px solid #26293b; display: flex; justify-content: space-between; }
+.summary-list li.empty { color: #515470; border: none; }
+.total-bar { font-size: 1.5rem; font-weight: bold; border-top: 2px solid #26293b; padding-top: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; }
+.checkout-btn { background: var(--brand); color: white; border: none; width: 100%; padding: 16px; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.checkout-btn:disabled { background: #222533; color: #515470; cursor: not-allowed; }
