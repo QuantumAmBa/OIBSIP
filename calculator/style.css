@@ -1,86 +1,58 @@
 body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
+    background: #0d0e12;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
-
-.app-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+.calc-container {
+    background: #161822;
+    border: 1px solid #26293b;
+    padding: 24px;
+    border-radius: 24px;
+    width: 360px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
-
-.calculator {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    width: 320px;
-}
-
-#display {
-    background: #2d2d2d;
-    padding: 20px;
-    font-size: 2rem;
-    text-align: right;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow-x: auto;
-}
-
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-button {
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background: #3d3d3d;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover { background: #505050; }
-.op { background: #ff9f0a; color: black; }
-.sci { background: #a5a5a5; color: black; }
-.action { background: #ff3b30; }
-.eq { background: #34c759; grid-row: span 2; }
-
-.converter {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 20px;
-    width: 300px;
-    height: fit-content;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: none;
-    background: #2d2d2d;
-    color: white;
-}
-.brand-mark {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #ff9f0a; /* Matches the operator color */
-    border: 2px solid #ff9f0a;
-    padding: 5px 10px;
-    border-radius: 5px;
+.brand-header {
+    font-size: 0.75rem;
     letter-spacing: 2px;
+    color: #6366f1;
+    font-weight: 800;
+    margin-bottom: 16px;
 }
+.display-wrapper {
+    background: #090a0f;
+    padding: 20px;
+    border-radius: 16px;
+    text-align: right;
+    margin-bottom: 20px;
+    border: 1px solid #1e2030;
+}
+.history { color: #515470; font-size: 0.9rem; min-height: 20px; font-family: monospace; }
+.main-display { color: #00ff87; font-size: 2.2rem; font-family: monospace; overflow: hidden; }
+.mode-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.mode-btn {
+    flex: 1; background: #202231; border: none; color: #a0a5c1; padding: 10px;
+    border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+}
+.mode-btn.active { background: #6366f1; color: white; }
+.grid-layout { display: none; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.grid-layout.active { display: grid; }
+.btn {
+    background: #202231; color: white; border: 1px solid #2c2f48; padding: 20px;
+    font-size: 1.2rem; font-weight: 600; border-radius: 12px; cursor: pointer; transition: 0.1s;
+}
+.btn:hover { background: #2a2d42; }
+.btn.op { background: #2e264f; color: #b49eff; border-color: #443775; }
+.btn.sci { background: #1b2735; color: #64b5f6; font-size: 0.95rem; border-color: #263b52; }
+.btn.util { background: #3c242c; color: #ff7b9a; border-color: #5c313e; }
+.btn.eq { grid-column: span 1; background: #00ff87; color: #090a0f; }
+.converter-pane { flex-direction: column; gap: 16px; width: 100%; display: none; }
+.converter-pane select, .converter-pane input {
+    background: #090a0f; border: 1px solid #26293b; color: white; padding: 14px;
+    border-radius: 10px; font-size: 1rem; width: calc(100% - 28px);
+}
+.conv-result { font-weight: bold; color: #00ff87; font-size: 1.2rem; text-align: left; margin-top: 10px; }
