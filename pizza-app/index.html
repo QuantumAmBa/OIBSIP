@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Pizza Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="brand-nav">
+        <div class="nav-container">
+            <span class="logo">🍕 DOMINO-STYLE PORTAL</span>
+            <div class="ab-badge">AB CERTIFIED</div>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <div class="tracker-card">
+            <h3>🔴 LIVE ORDER TRACKING DASHBOARD</h3>
+            <div class="tracker-steps">
+                <span id="step-received" class="t-step active">Received</span> → 
+                <span id="step-kitchen" class="t-step">In Kitchen</span> → 
+                <span id="step-delivery" class="t-step">Sent to Delivery</span>
+            </div>
+        </div>
+
+        <div class="app-layout">
+            <div class="card panel">
+                <h2 id="flow-title">1. Select Your Crust (Base)</h2>
+                <div id="selection-container" class="item-grid">
+                    </div>
+            </div>
+
+            <div class="card panel summary">
+                <h2>Your Custom Pizza</h2>
+                <ul class="summary-list" id="summary-items">
+                    <li class="empty">No ingredients selected yet</li>
+                </ul>
+                <div class="total-bar">Total: ₹<span id="total-price">0</span></div>
+                <button class="checkout-btn" disabled id="pay-btn" onclick="triggerCheckout()">Proceed to Secure Payment</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
