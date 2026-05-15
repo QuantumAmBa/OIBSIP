@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amey Bajpai - OIBSIP Projects</title>
+    <title>Amey Bajpai - OIBSIP Portfolio</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
-        h1 { color: #FF4136; margin-bottom: 10px; }
-        p { color: #888; font-size: 1.1rem; }
-        .container { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
-        .card { background: #1e1e1e; border: 2px solid #333; padding: 30px; border-radius: 15px; width: 250px; transition: 0.3s; text-decoration: none; color: inherit; }
-        .card:hover { border-color: #FF4136; transform: translateY(-5px); }
-        .card h3 { margin-top: 0; color: #FFB400; }
+        :root { --red: #FF4136; --gold: #FFB400; --dark: #121212; --card-bg: #1e1e1e; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--dark); color: #fff; text-align: center; margin: 0; padding: 60px 20px; }
+        h1 { color: var(--red); margin-bottom: 5px; font-size: 2.5rem; }
+        .subtitle { color: #888; font-size: 1.1rem; margin-bottom: 40px; }
+        .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+        .card { background: var(--card-bg); border: 2px solid #333; padding: 30px; border-radius: 15px; width: 280px; text-align: left; transition: transform 0.3s, border-color: 0.3s; }
+        .card:hover { border-color: var(--red); transform: translateY(-5px); }
+        .card h3 { margin-top: 0; color: var(--gold); font-size: 1.4rem; }
+        .card p { color: #ccc; font-size: 0.95rem; line-height: 1.5; min-height: 70px; }
+        .btn { display: inline-block; background: var(--red); color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 15px; width: calc(100% - 40px); text-align: center; }
+        .btn:hover { background: #e0372d; }
+        .btn-alt { background: #333; border: 1px solid #555; }
+        .btn-alt:hover { background: #444; }
     </style>
 </head>
 <body>
 
-    <h1>🏆 Oasis Infobyte Internship Portfolio</h1>
-    <p>Amey Bajpai | IIT Madras Engineering Student</p>
+    <h1>🍕 Oasis Infobyte Internship Portfolio 🧮</h1>
+    <div class="subtitle">Amey Bajpai | IIT Madras Engineering Intern</div>
 
     <div class="container">
-        <a href="#" onclick="alert('The pizza app interface handles customization. Click Place Order to send a test payload straight to the live Render backend!'); return false;" class="card">
-            <h3>🍕 Pizza Delivery App</h3>
-            <p>Full-stack app featuring real-time inventory tracking and automated email stock notifications.</p>
-        </a>
+        <div class="card">
+            <h3>Pizza Delivery Application</h3>
+            <p>Full-stack system featuring client customization flows, dynamic inventory tracking handling database stock decrements, and automated admin alerts via NodeMailer.</p>
+            <a href="https://oibsip-9z7q.onrender.com" target="_blank" class="btn">Launch App Engine</a>
+        </div>
 
-        <div class="card" style="opacity: 0.6;">
-            <h3>🧮 Calculator App</h3>
-            <p>Completed project dashboard submission.</p>
+        <div class="card">
+            <h3>Standard Calculator</h3>
+            <p>A beautiful user interface implementing clear calculations, operator precedence functions, and smooth state updates.</p>
+            <a href="https://github.com/QuantumAmBa/OIBSIP" target="_blank" class="btn btn-alt">View Source Code</a>
         </div>
     </div>
 
