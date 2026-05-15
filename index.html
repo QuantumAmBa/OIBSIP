@@ -6,38 +6,91 @@
     <title>Amey Bajpai - OIBSIP Portfolio</title>
     <style>
         :root { --red: #FF4136; --gold: #FFB400; --dark: #121212; --card-bg: #1e1e1e; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--dark); color: #fff; text-align: center; margin: 0; padding: 60px 20px; }
-        h1 { color: var(--red); margin-bottom: 5px; font-size: 2.5rem; }
-        .subtitle { color: #888; font-size: 1.1rem; margin-bottom: 40px; }
-        .container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
-        .card { background: var(--card-bg); border: 2px solid #333; padding: 30px; border-radius: 15px; width: 280px; text-align: left; transition: transform 0.3s, border-color: 0.3s; }
-        .card:hover { border-color: var(--red); transform: translateY(-5px); }
-        .card h3 { margin-top: 0; color: var(--gold); font-size: 1.4rem; }
-        .card p { color: #ccc; font-size: 0.95rem; line-height: 1.5; min-height: 70px; }
-        .btn { display: inline-block; background: var(--red); color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; margin-top: 15px; width: calc(100% - 40px); text-align: center; }
-        .btn:hover { background: #e0372d; }
-        .btn-alt { background: #333; border: 1px solid #555; }
-        .btn-alt:hover { background: #444; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--dark); color: #fff; margin: 0; padding: 40px 20px; text-align: center; }
+        h1 { color: var(--red); margin-bottom: 5px; }
+        .subtitle { color: #888; margin-bottom: 30px; }
+        
+        /* Tabs System */
+        .tab-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
+        .tab-btn { background: #333; color: white; border: 2px solid #555; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: var(--red); border-color: var(--red); }
+        
+        .app-section { display: none; max-width: 500px; margin: 0 auto; background: var(--card-bg); border: 2px solid #333; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        .app-section.active { display: block; }
+
+        /* Pizza App Styles */
+        .pop-btn { background: var(--red); color: white; border: none; padding: 12px 24px; margin: 10px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .pop-btn:hover { background: var(--gold); transform: scale(1.05); }
+        .ab-badge { display: inline-block; border: 2px solid var(--gold); color: var(--gold); padding: 2px 10px; font-weight: bold; margin-bottom: 15px; border-radius: 4px; }
+
+        /* Calculator Styles */
+        .calc-screen { background: #111; color: #00ff00; font-family: monospace; font-size: 2rem; padding: 15px; text-align: right; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; min-height: 40px; }
+        .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .calc-btn { background: #2a2a2a; color: white; border: 1px solid #444; padding: 20px; font-size: 1.2rem; border-radius: 8px; cursor: pointer; }
+        .calc-btn:hover { background: #444; }
+        .calc-btn.op { background: var(--gold); color: #000; font-weight: bold; }
+        .calc-btn.op:hover { background: #e09e00; }
+        .calc-btn.eq { grid-column: span 2; background: var(--red); font-weight: bold; }
+        .calc-btn.eq:hover { background: #d03027; }
     </style>
 </head>
 <body>
 
-    <h1>🍕 Oasis Infobyte Internship Portfolio 🧮</h1>
+    <h1>🏆 Oasis Infobyte Portfolio Dashboard</h1>
     <div class="subtitle">Amey Bajpai | IIT Madras Engineering Intern</div>
 
-    <div class="container">
-        <div class="card">
-            <h3>Pizza Delivery Application</h3>
-            <p>Full-stack system featuring client customization flows, dynamic inventory tracking handling database stock decrements, and automated admin alerts via NodeMailer.</p>
-            <a href="https://oibsip-9z7q.onrender.com" target="_blank" class="btn">Launch App Engine</a>
-        </div>
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchApp('pizza-app', this)">🍕 Pizza System</button>
+        <button class="tab-btn" onclick="switchApp('calc-app', this)">🧮 Calculator System</button>
+    </div>
 
-        <div class="card">
-            <h3>Standard Calculator</h3>
-            <p>A beautiful user interface implementing clear calculations, operator precedence functions, and smooth state updates.</p>
-            <a href="https://github.com/QuantumAmBa/OIBSIP" target="_blank" class="btn btn-alt">View Source Code</a>
+    <div id="pizza-app" class="app-section active">
+        <div class="ab-badge">AB PIZZA MARK</div>
+        <h2 id="pizza-title">Step 1: Select Your Pizza Base</h2>
+        <div id="pizza-options">
+            <button class="pop-btn" onclick="choosePizza('base', 'Thin Crust')">Thin Crust</button>
+            <button class="pop-btn" onclick="choosePizza('base', 'Cheese Burst')">Cheese Burst</button>
+            <button class="pop-btn" onclick="choosePizza('base', 'Pan Pizza')">Pan Pizza</button>
+        </div>
+        <p id="order-status" style="margin-top: 20px; color: var(--gold); font-weight: bold;"></p>
+    </div>
+
+    <div id="calc-app" class="app-section">
+        <div class="calc-screen" id="display">0</div>
+        <div class="calc-grid">
+            <button class="calc-btn" onclick="clearCalc()">C</button>
+            <button class="calc-btn op" onclick="pressOp('/')">/</button>
+            <button class="calc-btn op" onclick="pressOp('*')">*</button>
+            <button class="calc-btn op" onclick="pressOp('-')">-</button>
+            
+            <button class="calc-btn" onclick="pressNum('7')">7</button>
+            <button class="calc-btn" onclick="pressNum('8')">8</button>
+            <button class="calc-btn" onclick="pressNum('9')">9</button>
+            <button class="calc-btn op" onclick="pressOp('+')">+</button>
+            
+            <button class="calc-btn" onclick="pressNum('4')">4</button>
+            <button class="calc-btn" onclick="pressNum('5')">5</button>
+            <button class="calc-btn" onclick="pressNum('6')">6</button>
+            <button class="calc-btn" onclick="pressNum('1')">1</button>
+            
+            <button class="calc-btn" onclick="pressNum('2')">2</button>
+            <button class="calc-btn" onclick="pressNum('3')">3</button>
+            <button class="calc-btn" onclick="pressNum('0')">0</button>
+            <button class="calc-btn" onclick="pressNum('.')">.</button>
+            
+            <button class="calc-btn eq" onclick="calculate()">=</button>
         </div>
     </div>
 
+    <script src="script.js"></script>
+    <script>
+        // Tab controller logic
+        function switchApp(appId, btn) {
+            document.querySelectorAll('.app-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(appId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
 </body>
 </html>
