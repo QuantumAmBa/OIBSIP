@@ -1,43 +1,45 @@
-const display = document.getElementById('display');
+// Point your frontend to your brand new live backend API
+const API_URL = "https://oibsip-9z7q.onrender.com/api/order";
 
-function append(value) {
-    // If-else logic to prevent multiple decimals
-    if (value === '.' && display.innerText.includes('.')) return;
-    
-    if (display.innerText === '0' && value !== '.') {
-        display.innerText = value;
-    } else {
-        display.innerText += value;
+let selectedItems = [];
+
+function selectComponent(componentName) {
+    selectedItems.push(componentName);
+    console.log("Added to custom pizza:", componentName);
+}
+
+async function placeOrder() {
+    if (selectedItems.length === 0) {
+        alert("Please select some ingredients first!");
+        return;
     }
-}
 
-function clearDisplay() { display.innerText = '0'; }
+    const orderStatusText = document.getElementById("order-status");
+    if (orderStatusText) orderStatusText.innerText = "Sending Order...";
 
-function backspace() {
-    display.innerText = display.innerText.slice(0, -1) || '0';
-}
-
-function calculate() {
     try {
-        // Using a Function constructor is slightly safer than eval()
-        display.innerText = eval(display.innerText.replace('π', Math.PI));
-    } catch {
-        display.innerText = 'Error';
-    }
-}
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ items: selectedItems })
+        });
 
-function runConversion() {
-    const val = parseFloat(document.getElementById('unitInput').value);
-    const type = document.getElementById('convertType').value;
-    const res = document.getElementById('convResult');
-    
-    if (isNaN(val)) return res.innerText = "Please enter a number";
-
-    let final;
-    switch(type) {
-        case 'kgToLb': final = (val * 2.20462).toFixed(2) + " lbs"; break;
-        case 'kmToM': final = (val * 0.621371).toFixed(2) + " miles"; break;
-        case 'cToF': final = ((val * 9/5) + 32).toFixed(2) + " °F"; break;
+        const data = await response.json();
+        
+        if (data.success) {
+            if (orderStatusText) {
+                // Point 9 & 10: Update the user dashboard status
+                orderStatusText.innerText = "Status: In the Kitchen 🍕";
+            }
+            alert("Order Confirmed! Your tracking dashboard has updated.");
+        } else {
+            if (orderStatusText) orderStatusText.innerText = "Status: Order Failed";
+            alert("Error processing order.");
+        }
+    } catch (error) {
+        console.error("Order API Error:", error);
+        if (orderStatusText) orderStatusText.innerText = "Status: Connection Error";
     }
-    res.innerText = final;
 }
