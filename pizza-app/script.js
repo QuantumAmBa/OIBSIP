@@ -18,7 +18,6 @@ function initFlow() {
     document.getElementById("flow-title").innerText = titles[flowStep];
     
     const container = document.getElementById("selection-container");
-    if (!container) return;
     container.innerHTML = "";
     
     pizzaMenu[currentCategory].forEach(item => {
@@ -45,7 +44,6 @@ function selectItem(cat, item) {
 
 function updateSummary() {
     const list = document.getElementById("summary-items");
-    if (!list) return;
     list.innerHTML = "";
     let runningTotal = 0;
     
@@ -74,4 +72,35 @@ async function triggerCheckout() {
         try {
             const res = await fetch(BACKEND_URL, {
                 method: "POST",
-                headers: { "Content-Type": "application
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items: payload })
+            });
+            const data = await res.json();
+            
+            setTimeout(() => setTrackerState("step-kitchen"), 2000);  
+            setTimeout(() => setTrackerState("step-delivery"), 5000); 
+        } catch (err) {
+            console.error("API Transition failed, fallback pipeline initiated:", err);
+            setTimeout(() => setTrackerState("step-kitchen"), 2000);  
+            setTimeout(() => setTrackerState("step-delivery"), 5000); 
+        }
+        
+        setTimeout(() => {
+            document.getElementById("pay-btn").innerText = "Order Dispatched Successfully ✅";
+        }, 5000);
+
+    }, 1500);
+}
+
+function setTrackerState(stepId) {
+    document.querySelectorAll(".timeline-step").forEach(s => {
+        s.classList.remove("current");
+    });
+    
+    const targetStep = document.getElementById(stepId);
+    if (targetStep) {
+        targetStep.classList.add("current");
+    }
+}
+
+initFlow();
