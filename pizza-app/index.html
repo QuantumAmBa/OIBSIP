@@ -3,78 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Artisanal - Custom Creation Engine</title>
+    <title>Pizzeria Artisanal | Custom Engine</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="floating-nav">
-        <div class="nav-container">
-            <div class="brand-identity">
-                <span class="pizza-icon">🍕</span>
-                <div>
-                    <span class="logo-main">PIZZERIA ARTISANAL</span>
-                    <span class="logo-sub">CRAFTED IN ITALY</span>
+    <header class="floating-header">
+        <div class="header-container">
+            <div class="brand-block">
+                <span class="brand-emoji">🍕</span>
+                <div class="brand-text">
+                    <span class="title-main">PIZZERIA ARTISANAL</span>
+                    <span class="title-sub">HAND-CRAFTED ITALIAN SELECTIONS</span>
                 </div>
             </div>
-            <div class="portfolio-badge">PREMIUM INTERACTIVE PORTFOLIO</div>
-        </div>
-    </nav>
-
-    <div class="main-content-wrapper">
-        <div class="tracking-card">
-            <div class="tracker-header">
-                <span class="pulse-indicator"></span>
-                <h3>REAL-TIME ORDER STATUS ENVIRONMENT</h3>
-            </div>
-            <div class="tracker-timeline">
-                <div id="step-received" class="timeline-node active">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Order Received</span>
-                </div>
-                <div class="timeline-line"></div>
-                <div id="step-kitchen" class="timeline-node">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Artisanal Prep</span>
-                </div>
-                <div class="timeline-line"></div>
-                <div id="step-delivery" class="timeline-node">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Out for Delivery</span>
-                </div>
+            <div class="badge-status">
+                <span class="status-dot-green"></span>
+                <span class="badge-text">SECURE SERVER ONLINE</span>
             </div>
         </div>
+    </header>
 
-        <div class="workspace-grid">
-            <div class="panel workflow-panel">
+    <main class="content-engine">
+        <section class="tracker-surface">
+            <div class="tracker-meta">
+                <span class="live-pulse"></span>
+                <h3>ARTISANAL KITCHEN PIPELINE PIPELINE</h3>
+            </div>
+            <div class="timeline-rail">
+                <div id="step-received" class="timeline-step current">
+                    <div class="step-circle">1</div>
+                    <span class="step-lbl">Order Authenticated</span>
+                </div>
+                <div class="rail-line"></div>
+                <div id="step-kitchen" class="timeline-step">
+                    <div class="step-circle">2</div>
+                    <span class="step-lbl">Baking & Prep</span>
+                </div>
+                <div class="rail-line"></div>
+                <div id="step-delivery" class="timeline-step">
+                    <div class="step-circle">3</div>
+                    <span class="step-lbl">Dispatched</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="dual-column-workspace">
+            <section class="panel configuration-card">
                 <h2 id="flow-title">1. Select Your Crust (Base)</h2>
-                <div id="selection-container" class="gourmet-grid">
+                <div id="selection-container" class="gourmet-product-grid">
                     </div>
-            </div>
+            </section>
 
-            <div class="panel ticket-panel">
-                <div class="ticket-header">
+            <section class="panel bill-ticket-card">
+                <div class="ticket-header-rim">
                     <h2>Your Creation</h2>
-                    <p class="ticket-date">Bistro Ticket #0786</p>
+                    <span class="ticket-id">TICKET #0786</span>
                 </div>
                 
-                <ul class="receipt-manifest" id="summary-items">
-                    <li class="manifest-empty-state">Select ingredients to begin assembly...</li>
+                <ul class="order-manifest-lines" id="summary-items">
+                    <li class="blank-manifest-state">No ingredients selected yet...</li>
                 </ul>
                 
-                <div class="pricing-summary-block">
-                    <div class="price-row total-row">
-                        <span>Total Due</span>
+                <div class="pricing-calculator-block">
+                    <div class="total-row-bar">
+                        <span>Total Balance</span>
                         <span>₹<span id="total-price">0</span></span>
                     </div>
                 </div>
                 
-                <button class="action-dispatch-btn" disabled id="pay-btn" onclick="triggerCheckout()">
-                    Finalize & Dispatch Order
+                <button class="checkout-dispatch-trigger" disabled id="pay-btn" onclick="triggerCheckout()">
+                    Authorize & Place Order
                 </button>
-            </div>
+            </section>
         </div>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
