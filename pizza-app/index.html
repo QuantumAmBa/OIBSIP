@@ -3,44 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourmet Pizza Portal</title>
+    <title>Pizzeria Artisanal - Custom Creation Engine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="brand-nav">
+
+    <nav class="floating-nav">
         <div class="nav-container">
-            <span class="logo">🍕 DOMINO-STYLE PORTAL</span>
-            <div class="ab-badge">AB CERTIFIED</div>
+            <div class="brand-identity">
+                <span class="pizza-icon">🍕</span>
+                <div>
+                    <span class="logo-main">PIZZERIA ARTISANAL</span>
+                    <span class="logo-sub">CRAFTED IN ITALY</span>
+                </div>
+            </div>
+            <div class="portfolio-badge">PREMIUM INTERACTIVE PORTFOLIO</div>
         </div>
     </nav>
 
-    <div class="main-wrapper">
-        <div class="tracker-card">
-            <h3>🔴 LIVE ORDER TRACKING DASHBOARD</h3>
-            <div class="tracker-steps">
-                <span id="step-received" class="t-step active">Received</span> → 
-                <span id="step-kitchen" class="t-step">In Kitchen</span> → 
-                <span id="step-delivery" class="t-step">Sent to Delivery</span>
+    <div class="main-content-wrapper">
+        <div class="tracking-card">
+            <div class="tracker-header">
+                <span class="pulse-indicator"></span>
+                <h3>REAL-TIME ORDER STATUS ENVIRONMENT</h3>
+            </div>
+            <div class="tracker-timeline">
+                <div id="step-received" class="timeline-node active">
+                    <span class="node-dot"></span>
+                    <span class="node-label">Order Received</span>
+                </div>
+                <div class="timeline-line"></div>
+                <div id="step-kitchen" class="timeline-node">
+                    <span class="node-dot"></span>
+                    <span class="node-label">Artisanal Prep</span>
+                </div>
+                <div class="timeline-line"></div>
+                <div id="step-delivery" class="timeline-node">
+                    <span class="node-dot"></span>
+                    <span class="node-label">Out for Delivery</span>
+                </div>
             </div>
         </div>
 
-        <div class="app-layout">
-            <div class="card panel">
+        <div class="workspace-grid">
+            <div class="panel workflow-panel">
                 <h2 id="flow-title">1. Select Your Crust (Base)</h2>
-                <div id="selection-container" class="item-grid">
+                <div id="selection-container" class="gourmet-grid">
                     </div>
             </div>
 
-            <div class="card panel summary">
-                <h2>Your Custom Pizza</h2>
-                <ul class="summary-list" id="summary-items">
-                    <li class="empty">No ingredients selected yet</li>
+            <div class="panel ticket-panel">
+                <div class="ticket-header">
+                    <h2>Your Creation</h2>
+                    <p class="ticket-date">Bistro Ticket #0786</p>
+                </div>
+                
+                <ul class="receipt-manifest" id="summary-items">
+                    <li class="manifest-empty-state">Select ingredients to begin assembly...</li>
                 </ul>
-                <div class="total-bar">Total: ₹<span id="total-price">0</span></div>
-                <button class="checkout-btn" disabled id="pay-btn" onclick="triggerCheckout()">Proceed to Secure Payment</button>
+                
+                <div class="pricing-summary-block">
+                    <div class="price-row total-row">
+                        <span>Total Due</span>
+                        <span>₹<span id="total-price">0</span></span>
+                    </div>
+                </div>
+                
+                <button class="action-dispatch-btn" disabled id="pay-btn" onclick="triggerCheckout()">
+                    Finalize & Dispatch Order
+                </button>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
